@@ -7,6 +7,7 @@ doc: "Coinami Read Mapping Workflow to run on client machine"
 
 requirements:
   - class: SubworkflowFeatureRequirement
+  - class: MultipleInputFeatureRequirement
 
 inputs:
   reference:
@@ -26,24 +27,7 @@ outputs:
     outputSource: alignment_5/index
 
 steps:
-  indexing_ref_sam:
-    run: workflows/tools/samtools-faidx.cwl
-    in:
-      input: reference
-    out: [index]
-
-  indexing_ref_bwa:
-    run: workflows/tools/bwa-index.cwl
-    in:
-      algorithm: 
-        default:  
-      sequences: reference
-    out: [output]
-
   alignment_1:
-    requirements:
-      - class: MultipleInputFeatureRequirement
-      
     run: workflows/tools/bwa-mem.cwl
     in:
       reference: reference
@@ -86,6 +70,11 @@ steps:
 
 s:downloadUrl: https://github.com/halilozercan/coinami-workflow/blob/master/coinami.cwl
 s:codeRepository: https://github.com/halilozercan/coinami-workflow
+
+s:author:
+  class: s:Person
+  s:name: Halil Ozercan
+  s:email: mailto:halil.ozercan@bilkent.edu.tr
 
 doc: |
   Coinami is designed and developed by a small group in Bilkent University
