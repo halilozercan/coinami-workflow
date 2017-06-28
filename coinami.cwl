@@ -67,6 +67,9 @@ steps:
       input: alignment_4/rmdup
     out: [index]
 
+$schemas:
+- http://schema.org/docs/schema_org_rdfa.html
+
 s:downloadUrl: https://github.com/halilozercan/coinami-workflow/blob/master/coinami.cwl
 s:codeRepository: https://github.com/halilozercan/coinami-workflow
 
