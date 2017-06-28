@@ -4,8 +4,6 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 requirements:
-- $import: envvar-global.yml
-- $import: bwa-docker.yml
 - class: InlineJavascriptRequirement
 
 inputs:

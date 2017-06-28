@@ -20,9 +20,13 @@ inputs:
     doc: "Second strand reads from Illumina Sequence"
 
 outputs:
+  output:
+    type: File
+    doc: "Final output after removing duplicates"
+    outputSource: alignment_4/rmdup
   indexed_output:
     type: File
-    doc: "Ultimate output which should be sent to Employer"
+    doc: "Index of final output"
     outputSource: alignment_5/index
 
 steps:

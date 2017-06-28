@@ -4,8 +4,6 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 requirements:
-- $import: envvar-global.yml
-- $import: samtools-docker.yml
 - class: InlineJavascriptRequirement
 
 inputs:
@@ -46,7 +44,7 @@ inputs:
     inputBinding:
       prefix: -n
     doc: Sort by read names (i.e., the QNAME field) rather than by chromosomal coordinates.
-    
+
 outputs:
   sorted:
     type: File

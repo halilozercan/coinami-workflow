@@ -4,8 +4,6 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 requirements:
-- $import: envvar-global.yml
-- $import: samtools-docker.yml
 - class: InlineJavascriptRequirement
   expressionLib:
   - var new_ext = function() { var ext=inputs.bai?'.bai':inputs.csi?'.csi':'.bai';
