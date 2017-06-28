@@ -1,0 +1,14 @@
+{
+    "reference": {
+        "class": "File",
+        "location": "/path/to/reference.fa"
+    },
+    "reads_1": {
+        "class": "File",
+        "location": "/path/to/reads_1.fq"
+    },
+    "reads_2": {
+        "class": "File",
+        "location": "/path/to/reads_2.fq"
+    }
+}
