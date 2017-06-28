@@ -67,6 +67,9 @@ steps:
       input: alignment_4/rmdup
     out: [index]
 
+$namespaces:
+  s: http://schema.org/
+
 $schemas:
 - http://schema.org/docs/schema_org_rdfa.html
 
