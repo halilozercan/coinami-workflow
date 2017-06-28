@@ -52,8 +52,7 @@ outputs:
       glob: $(inputs.output_name)
 
 baseCommand: [samtools, sort]
-arguments:
-- -f
+
 $namespaces:
   s: http://schema.org/
 
