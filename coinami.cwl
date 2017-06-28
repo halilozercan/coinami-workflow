@@ -27,16 +27,17 @@ outputs:
 
 steps:
   alignment_1:
-    run: workflows/tools/bwa-mem.cwl
+    run: bwa-mem.cwl
     in:
-      reference: reference
+      reference: 
+        source: reference
       reads: [reads_1, reads_2]
       output_filename:
         default: "output.sam"
     out: [output]
 
   alignment_2:
-    run: workflows/tools/samtools-view.cwl
+    run: samtools-view.cwl
     in:
       isBam:
         default: true
@@ -46,7 +47,7 @@ steps:
     out: [output]
 
   alignment_3:
-    run: workflows/tools/samtools-sort.cwl
+    run: samtools-sort.cwl
     in:
       input: alignment_2/output
       output_name: 
@@ -54,7 +55,7 @@ steps:
     out: [sorted]
 
   alignment_4:
-    run: workflows/tools/samtools-rmdup.cwl
+    run: samtools-rmdup.cwl
     in:
       input: alignment_3/sorted
       output_name: 
@@ -62,7 +63,7 @@ steps:
     out: [rmdup]
 
   alignment_5:
-    run: workflows/tools/samtools-index.cwl
+    run: samtools-index.cwl
     in:
       input: alignment_4/rmdup
     out: [index]
