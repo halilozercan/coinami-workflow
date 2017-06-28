@@ -19,32 +19,34 @@ inputs:
     type: int?
     inputBinding:
       prefix: -@
-
     doc: Set number of sorting and compression threads [1]
+
   memory:
     type: string?
     inputBinding:
       prefix: -m
     doc: |
       Set maximum memory per thread; suffix K/M/G recognized [768M]
+
   input:
     type: File
     inputBinding:
       position: 1
-
     doc: Input bam file.
+
   output_name:
     type: string
     inputBinding:
+      prefix: -o
       position: 2
-
     doc: Desired output filename.
+
   sort_by_name:
     type: boolean?
     inputBinding:
       prefix: -n
-
     doc: Sort by read names (i.e., the QNAME field) rather than by chromosomal coordinates.
+    
 outputs:
   sorted:
     type: File
