@@ -35,11 +35,15 @@ steps:
   indexing_ref_bwa:
     run: workflows/tools/bwa-index.cwl
     in:
-      algorithm: bwtsw
+      algorithm: 
+        default:  
       sequences: reference
-    outputs: [output]
+    out: [output]
 
   alignment_1:
+    requirements:
+      - class: MultipleInputFeatureRequirement
+      
     run: workflows/tools/bwa-mem.cwl
     in:
       reference: reference
