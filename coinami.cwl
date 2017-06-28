@@ -2,8 +2,7 @@
 class: Workflow
 cwlVersion: v1.0
 
-label: "Hello World"
-doc: "Coinami Read Mapping Workflow to run on client machine"
+label: "Coinami"
 
 requirements:
   - class: SubworkflowFeatureRequirement
