@@ -26,6 +26,11 @@ inputs:
     doc: |
       Set maximum memory per thread; suffix K/M/G recognized [768M]
 
+  std_out:
+    type: boolean
+    default: false
+    doc: "Write final output to stdout"
+
   input:
     type: File
     inputBinding:
@@ -35,7 +40,6 @@ inputs:
   output_name:
     type: string
     inputBinding:
-      prefix: -o
       position: 2
     doc: Desired output filename.
 
@@ -49,7 +53,7 @@ outputs:
   sorted:
     type: File
     outputBinding:
-      glob: $(inputs.output_name)
+      glob: $(inputs.output_name).bam
 
 baseCommand: [samtools, sort]
 

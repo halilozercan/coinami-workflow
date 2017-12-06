@@ -12,17 +12,18 @@ inputs:
     default: false
     doc: |
       rmdup for SE reads
+
   input:
     type: File
     inputBinding:
-      position: 2
-
+      position: 1
     doc: |
       Input bam file.
+
   output_name:
     type: string
     inputBinding:
-      position: 3
+      position: 2
 
   pairend_as_se:
     type: boolean

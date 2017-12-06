@@ -1,14 +1,15 @@
 {
     "reference": {
         "class": "File",
-        "location": "/path/to/reference.fa"
+        "location": "/usr/local/coinami/ref.fa"
     },
     "reads_1": {
         "class": "File",
-        "location": "/path/to/reads_1.fq"
+        "location": "/input/58a14679.1.fastq"
     },
     "reads_2": {
         "class": "File",
-        "location": "/path/to/reads_2.fq"
-    }
+        "location": "/input/58a14679.2.fastq"
+    },
+    "threads": 4
 }

@@ -9,12 +9,20 @@ requirements:
 inputs:
   isbam:
     type: boolean
-    default: false
+    default: true
     inputBinding:
       position: 2
       prefix: -b
     doc: |
       output in BAM format
+  inputsam:
+    type: boolean
+    default: true
+    inputBinding:
+      position: 1
+      prefix: -S
+    doc: |
+      input in SAM format
   readswithoutbits:
     type: int?
     inputBinding:

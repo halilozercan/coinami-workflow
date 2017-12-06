@@ -18,6 +18,9 @@ inputs:
   reads_2:
     type: File
     doc: "Second strand reads from Illumina Sequence"
+  threads:
+    type: int
+    doc: "Number of threads"
 
 outputs:
   output:
@@ -38,13 +41,13 @@ steps:
       reads: [reads_1, reads_2]
       output_filename:
         default: "output.sam"
+      threads:
+        source: threads
     out: [output]
 
   alignment_2:
     run: samtools-view.cwl
     in:
-      isBam:
-        default: true
       input: alignment_1/output
       output_name: 
         default: "output.bam"
@@ -56,6 +59,8 @@ steps:
       input: alignment_2/output
       output_name: 
         default: "output.sorted"
+      threads:
+        source: threads
     out: [sorted]
 
   alignment_4:
