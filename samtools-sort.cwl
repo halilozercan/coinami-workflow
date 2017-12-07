@@ -26,11 +26,6 @@ inputs:
     doc: |
       Set maximum memory per thread; suffix K/M/G recognized [768M]
 
-  std_out:
-    type: boolean
-    default: false
-    doc: "Write final output to stdout"
-
   input:
     type: File
     inputBinding:
@@ -40,7 +35,7 @@ inputs:
   output_name:
     type: string
     inputBinding:
-      position: 2
+      prefix: -o
     doc: Desired output filename.
 
   sort_by_name:
