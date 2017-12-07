@@ -1,15 +1,15 @@
 {
     "reference": {
         "class": "File",
-        "location": "/usr/local/coinami/ref.fa"
+        "location": "/reference/human_g1k_v37.fasta"
     },
     "reads_1": {
         "class": "File",
-        "location": "/input/58a14679.1.fastq"
+        "location": "/input/fastq/1m.1.fastq"
     },
     "reads_2": {
         "class": "File",
-        "location": "/input/58a14679.2.fastq"
+        "location": "/input/fastq/1m.2.fastq"
     },
     "threads": 4
 }
