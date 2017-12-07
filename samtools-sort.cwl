@@ -48,7 +48,7 @@ outputs:
   sorted:
     type: File
     outputBinding:
-      glob: $(inputs.output_name).bam
+      glob: $(inputs.output_name)
 
 baseCommand: [samtools, sort]
 

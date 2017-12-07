@@ -38,8 +38,8 @@ outputs:
     type: File
     outputBinding:
       glob: $(new_ext())
-
     doc: The index file
+
 baseCommand: [samtools, index]
 arguments:
 - valueFrom: $(inputs.bai?'-b':inputs.csi?'-c':[])

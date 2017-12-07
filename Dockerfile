@@ -26,9 +26,14 @@ RUN wget https://github.com/lh3/bwa/releases/download/v0.7.17/bwa-0.7.17.tar.bz2
 
 ENV PATH=/usr/local/samtools/bin:/usr/local/bwa:$PATH
 
+RUN apt-get install vim less zip -y
+
 RUN mkdir /usr/local/coinami/
 COPY . /usr/local/coinami/
+WORKDIR /usr/local/coinami/
 
 VOLUME /reference
 VOLUME /input
 VOLUME /output
+
+ENTRYPOINT ["rabix", "coinami.cwl", "/input/coinami.json", "--basedir", "/output"]

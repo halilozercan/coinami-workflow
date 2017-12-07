@@ -18,22 +18,21 @@ inputs:
   reads_2:
     type: File
     doc: "Second strand reads from Illumina Sequence"
+  output_loc:
+    type: string
+    doc: "Location to write final compressed result"
   threads:
     type: int
     doc: "Number of threads"
 
 outputs:
-  output:
+  zipped_output:
     type: File
-    doc: "Final output after removing duplicates"
-    outputSource: alignment_4/rmdup
-  indexed_output:
-    type: File
-    doc: "Index of final output"
-    outputSource: alignment_5/index
+    doc: "Final zipped output"
+    outputSource: zip/output
 
 steps:
-  alignment_1:
+  bwa_mem_alignment:
     run: bwa-mem.cwl
     in:
       reference: 
@@ -45,37 +44,45 @@ steps:
         source: threads
     out: [output]
 
-  alignment_2:
+  samtools_view:
     run: samtools-view.cwl
     in:
-      input: alignment_1/output
+      input: bwa_mem_alignment/output
       output_name: 
         default: "output.bam"
     out: [output]
 
-  alignment_3:
+  samtools_sort:
     run: samtools-sort.cwl
     in:
-      input: alignment_2/output
+      input: samtools_view/output
       output_name: 
         default: "output.sorted"
       threads:
         source: threads
     out: [sorted]
 
-  alignment_4:
+  samtools_rmdup:
     run: samtools-rmdup.cwl
     in:
-      input: alignment_3/sorted
+      input: samtools_sort/sorted
       output_name: 
         default: "output.rmdup.bam"
     out: [rmdup]
 
-  alignment_5:
+  samtools_index:
     run: samtools-index.cwl
     in:
-      input: alignment_4/rmdup
+      input: samtools_rmdup/rmdup
     out: [index]
+
+  zip:
+    run: zip.cwl
+    in:
+      files: [samtools_index/index, samtools_rmdup/rmdup]
+      zipFileName: 
+        source: output_loc
+    out: [output]
 
 $namespaces:
   s: http://schema.org/
