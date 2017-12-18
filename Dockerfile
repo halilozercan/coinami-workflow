@@ -24,6 +24,8 @@ RUN wget https://github.com/lh3/bwa/releases/download/v0.7.17/bwa-0.7.17.tar.bz2
     cd /usr/local/bwa && \
     make all
 
+RUN wget https://github.com/broadinstitute/picard/releases/download/2.16.0/picard.jar -O /usr/local/bin/picard.jar
+
 ENV PATH=/usr/local/samtools/bin:/usr/local/bwa:$PATH
 
 RUN apt-get install vim less zip -y

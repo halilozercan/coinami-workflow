@@ -62,24 +62,26 @@ steps:
         source: threads
     out: [sorted]
 
-  samtools_rmdup:
-    run: samtools-rmdup.cwl
+  picard_markdump:
+    run: picard.cwl
     in:
-      input: samtools_sort/sorted
-      output_name: 
-        default: "output.rmdup.bam"
-    out: [rmdup]
+      inputFileName_markDups: samtools_sort/sorted
+      metricsFile:
+        default: metrics.txt
+      outputFileName_markDups: 
+        default: "output.markdump.bam"
+    out: [markDups_output]
 
   samtools_index:
     run: samtools-index.cwl
     in:
-      input: samtools_rmdup/rmdup
+      input: picard_markdump/markDups_output
     out: [index]
 
   zip:
     run: zip.cwl
     in:
-      files: [samtools_index/index, samtools_rmdup/rmdup]
+      files: [samtools_index/index, picard_markdump/markDups_output]
       zipFileName: 
         source: output_loc
     out: [output]

@@ -1,0 +1,11 @@
+reads_1:
+	class: File
+	location:  c93f5a6a.1.fastq
+reads_2:
+	class: File
+	location:  c93f5a6a.2.fastq
+reference:
+	class: File
+	location: /reference/human_g1k_v37.fasta
+threads: 4
+output_loc: result.zip
